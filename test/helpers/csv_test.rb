@@ -8,7 +8,7 @@ class CsvTest < ActiveSupport::TestCase
   "Available file-\n" +
   "units-and-residents.csv\n"
 
-  test 'prints welcome to console' do
+  test "prints welcome to console" do
     assert_output(greeting_expected) { RentRoleReport.new.send(:greet) }
   end
 
@@ -20,7 +20,7 @@ class CsvTest < ActiveSupport::TestCase
   #   $stdin = STDIN
   # end
 
-  test 'invalid input' do
+  test "invalid input" do
     input = StringIO.new("A\n")
     $stdin = input
 
@@ -28,11 +28,11 @@ class CsvTest < ActiveSupport::TestCase
     $stdin = STDIN
   end
 
-  test 'search for csv file' do
+  test "search for csv file" do
     assert_output(csv_search_expected) { csv_search }
   end
 
-  test 'import csv files' do
+  test "import csv files" do
     CSV.foreach(csv_path, headers: true) do |row|
       unit = Unit.find_or_create_by(unit_number: row["unit"].to_i,
       floor_plan: row["floor_plan"])

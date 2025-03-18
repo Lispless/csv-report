@@ -45,7 +45,7 @@ class RentRoleReport
     csv_search
 
     load_message
-    
+
     csv_load
   end
 
